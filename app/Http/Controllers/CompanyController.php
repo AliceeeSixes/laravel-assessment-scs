@@ -10,13 +10,14 @@ use Illuminate\Validation\Rules\File;
 class CompanyController extends Controller
 {
     public function index() {
-        $companies = Company::all();
+        $companies = Company::with("employees")->orderBy("updated_at", "DESC")->simplePaginate(10);
         return view("companies.index", ["companies"=>$companies]);
     }
 
     public function show($id) {
         $company = Company::find($id);
-        return view("companies.show", ["company"=>$company]);
+        $employees = $company->employees;
+        return view("companies.show", ["company"=>$company, "employees"=>$employees]);
     }
 
     public function create($id = null) {
@@ -36,7 +37,7 @@ class CompanyController extends Controller
         ]);
 
         $logo = $request->validate([
-            "logo"=>[File::types(["png","jpg","webp"]), "nullable"]
+            "logo"=>[File::types(["png","jpg","webp"])->max("10mb"), "dimensions:mind_width=100,min_height=100", "nullable"]
         ]);
 
         if ($logo) {
@@ -56,7 +57,7 @@ class CompanyController extends Controller
 
 
         $logo = $request->validate([
-            "logo"=>[File::types(["png","jpg","webp"]), "nullable"]
+            "logo"=>[File::types(["png","jpg","webp"])->max("10mb"), "dimensions:mind_width=100,min_height=100", "nullable"]
         ]);
 
         if ($logo) {

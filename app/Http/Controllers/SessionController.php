@@ -30,7 +30,7 @@ class SessionController extends Controller
     public function store(Request $request)
     {
         $attributes = request()->validate([
-            "email" => ["required", "email"],
+            "email" => ["required"],
             "password" => ["required"]
         ]);
 
@@ -48,7 +48,7 @@ class SessionController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy()
     {
         Auth::logout();
 

@@ -9,7 +9,7 @@ use Illuminate\Validation\Rule;
 class EmployeeController extends Controller
 {
     public function index() {
-        $employees = Employee::all();
+        $employees = Employee::with("company")->orderBy("updated_at", "DESC")->simplePaginate(10);
         return view("employees.index", ["employees"=>$employees]);
     }
 
@@ -33,7 +33,8 @@ class EmployeeController extends Controller
             "last_name"=>["required", "max:128"],
             "company_id"=>["required"],
             "email"=>["nullable", "email:rfc", "max:128"],
-            "phone"=>["nullable", "max:128"]
+            "phone"=>["nullable", "max:128"],
+            "job_title"=>["nullable", "max:128"]
         ]);
         Employee::create($validatedAttributes);
         return redirect("/employees");
@@ -43,8 +44,10 @@ class EmployeeController extends Controller
         $validatedAttributes = $request->validate([
             "first_name"=>["required", "max:128"],
             "last_name"=>["required", "max:128"],
+            "company_id"=>["required"],
             "email"=>["nullable", "email:rfc", "max:128"],
-            "phone"=>["nullable", "max:128"]
+            "phone"=>["nullable", "max:128"],
+            "job_title"=>["nullable", "max:128"]
         ]);
         Employee::where("id",$id)->update($validatedAttributes);
         return redirect("/employees");

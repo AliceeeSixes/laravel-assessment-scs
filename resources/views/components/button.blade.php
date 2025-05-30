@@ -12,7 +12,7 @@
 
 
 @php
-    $classes = "rounded-lg px-3 py-1  text-white";
+    $classes = "rounded-lg px-3 py-1 cursor-pointer text-white";
 @endphp
 
 @if ($colour == "blue")

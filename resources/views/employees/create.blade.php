@@ -65,16 +65,35 @@
             </div>
 
             <div class="w-fit m-auto flex flex-col">
+                <label>Job Title</label>
+                <input name="job_title" class="border border-black rounded-xl px-3" 
+                    @if ($employee)
+                        value="{{ $employee->job_title }}"
+                    @endif
+                />
+            </div>
+
+            <div class="w-fit m-auto flex flex-col">
                 <label>Company</label>
                 <select name="company_id" class="border border-black rounded-lg">
                     <option value="" class="text-black">Select A Company</option>
                         @php
-                            $companies = App\Models\Company::all();
+                            $companies = App\Models\Company::orderBy("name")->get();
                         @endphp
                         @foreach ($companies as $company)
                             <option value="{{ $company->id }}" class="text-black"
-                                @if ($employee && $employee->company_id == $company->id)
-                                 selected
+                                @php
+                                    // Check if adding employee to a specific company
+                                    if (isset($_GET["company"])) {
+                                        $addToCompany = $_GET["company"];
+                                    } else {
+                                        $addToCompany = 0;
+                                    }
+                                @endphp
+
+                                @if (($employee && $employee->company_id == $company->id) || ($addToCompany == $company->id))
+                                    {{-- Auto select company if editing existing employee or adding to specific company --}}
+                                    selected
                                 @endif>
                                 {{$company->name}}</option>
                         @endforeach

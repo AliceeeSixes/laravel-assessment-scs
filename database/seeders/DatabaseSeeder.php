@@ -13,7 +13,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->call(CompanySeeder::class);
+        // $this->call(CompanySeeder::class); Unnecessary because EmployeeSeeder also creates companies
         $this->call(EmployeeSeeder::class);
+        $this->call(UserSeeder::class);
     }
 }
