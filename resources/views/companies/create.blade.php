@@ -26,36 +26,16 @@
 
             <h3 class="text-center text-xl">Company Details</h3>
 
-            <div class="w-fit m-auto flex flex-col">
-                <label>Name</label>
-                <input name="name" class="border border-slate-600 rounded-xl px-3"
-                    @if ($company)
-                        value="{{ $company->name }}"
-                    @endif
-                />
-            </div>
 
-            <div class="w-fit m-auto flex flex-col">
-                <label>Website</label>
-                <input name="website" class="border border-slate-600 rounded-xl px-3"
-                    @if ($company)
-                        value="{{ $company->website }}"
-                    @endif
-                />
-            </div>
+            <x-form.input name="name" label="Name" :company=$company/>
 
-            <div class="w-fit m-auto flex flex-col">
-                <label>Email</label>
-                <input name="email" class="border border-slate-600 rounded-xl px-3"
-                    @if ($company)
-                        value="{{ $company->email }}"
-                    @endif
-                />
-            </div>
+            <x-form.input name="website" label="Website" :company=$company/>
+
+            <x-form.input name="email" label="Email" :company=$company/>
 
             <div class="w-fit m-auto flex flex-col">
                 <label>Logo</label>
-                <input name="logo" type="file" class="border border-slate-600 rounded-xl px-3" />
+                <input name="logo" type="file" class="border border-slate-600 dark:border-white rounded-xl px-3" />
             </div>
 
             <div class="flex gap-5 justify-center">

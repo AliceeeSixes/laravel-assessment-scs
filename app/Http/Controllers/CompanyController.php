@@ -68,4 +68,13 @@ class CompanyController extends Controller
         Company::where("id",$id)->update($validatedAttributes);
         return redirect("/companies");
     }
+
+    public function destroy($id) {
+        // Find Company
+        $company = Company::find($id);
+        // Destroy Company
+        $company->delete();
+        // Redirect
+        return redirect("/companies");
+    }
 }

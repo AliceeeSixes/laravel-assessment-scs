@@ -52,4 +52,13 @@ class EmployeeController extends Controller
         Employee::where("id",$id)->update($validatedAttributes);
         return redirect("/employees");
     }
+
+    public function destroy($id) {
+        // Find Company
+        $employee = Employee::find($id);
+        // Destroy Company
+        $employee->delete();
+        // Redirect
+        return redirect("/employees");
+    }
 }

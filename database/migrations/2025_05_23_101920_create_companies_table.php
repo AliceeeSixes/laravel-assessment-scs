@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('companies', function (Blueprint $table) {
-            $table->id();
+            $table->id()->onDelete("cascade");
             $table->string("name");
             $table->string("email")->nullable();
             $table->string("logo")->nullable(); // Logo Filepath

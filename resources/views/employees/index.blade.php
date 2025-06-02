@@ -7,7 +7,7 @@
 
     <section class="max-w-300 m-auto ">
 
-        <div class="border border-gray-400 bg-gray-200 px-10 py-5 rounded-lg">
+        <div class="border border-gray-400 dark:border-white bg-gray-200 dark:bg-slate-950 px-10 py-5 rounded-lg">
 
             <div>
                 {{ $employees->links() }}
@@ -15,9 +15,9 @@
 
             <div class="grid gap-5 py-2">
                 @foreach ($employees as $employee)
-                    <x-panel href="/employees/{{ $employee->id }}" class="p-5 bg-white">
-                        <p class="text-lg font-bold truncate truncate-ellipsis">{{ $employee->last_name . ", " . $employee->first_name}}</p>
-                        <span class="truncate truncate-ellipsis">Works at 
+                    <x-panel href="/employees/{{ $employee->id }}" class="p-5 bg-white dark:bg-slate-900">
+                        <x-card-detail class="text-lg font-bold">{{ $employee->last_name . ", " . $employee->first_name}}</x-card-detail>
+                        <x-card-detail type="span">Works at 
                             <form action="/companies/{{ $employee->company->id }}" method="POST" class="w-fit inline">
                                 @csrf
                                 <button type="submit" class="inline cursor-pointer underline hover:text-blue-400">{{ $employee->company->name }}</button>
@@ -25,9 +25,9 @@
                             @if ($employee->job_title)
                                 as {{ $employee->job_title }}
                             @endif
-                        </span>
-                        <p class="truncate truncate-ellipsis">Email: {{ $employee->email }}</p>
-                        <p class="truncate truncate-ellipsis">Phone: {{ $employee->phone }}</p>
+                        </x-card-detail>
+                        <x-card-detail>Email: {{ $employee->email }}</x-card-detail>
+                        <x-card-detail>Phone: {{ $employee->phone }}</x-card-detail>
                     </x-panel>
                 @endforeach
 

@@ -19,6 +19,7 @@ Route::middleware(["auth"])->group(function () {
     Route::get('/companies/{id}', [CompanyController::class, "show"]);
     Route::post('/companies/{id}', [CompanyController::class, "show"]); // Needed for buttons inside cards that act as links
     Route::patch('/companies/edit/{id}', [CompanyController::class, "update"]);
+    Route::post('/companies/delete/{id}', [CompanyController::class, "destroy"]);
 });
 
 
@@ -32,6 +33,7 @@ Route::middleware(["auth"])->group(function () {
     Route::get('/employees/{id}', [EmployeeController::class, "show"]);
     Route::post('/employees/create', [EmployeeController::class, "store"]);
     Route::patch('/employees/edit/{id}', [EmployeeController::class, "update"]);
+    Route::post('/employees/delete/{id}', [EmployeeController::class, "destroy"]);
 });
 
 

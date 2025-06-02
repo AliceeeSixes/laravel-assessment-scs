@@ -6,13 +6,13 @@
 
 
     <section class="pb-10 m-auto max-w-300">
-        <div class="border border-gray-400 bg-gray-200 rounded-lg px-10 py-5">
+        <div class="border border-gray-400 dark:border-white bg-gray-200 dark:bg-slate-950 rounded-lg px-10 py-5">
             <div>
                 {{ $companies->links() }}
             </div>
             <div class="grid gap-5 my-2">
                 @foreach ($companies as $company)
-                    <x-panel href="/companies/{{ $company->id }}" class="p-5 bg-white">
+                    <x-panel href="/companies/{{ $company->id }}" class="p-5 bg-white dark:bg-slate-900">
                         <div class="flex justify-between">
                             <div class="truncate truncate-ellipsis">
                                 <p class="text-lg font-bold truncate truncate-ellipsis">{{ $company->name }}</p>
