@@ -7,6 +7,18 @@
 
     <section class="max-w-300 m-auto ">
 
+        <form id="search" action="/employees/search" method="get" class="flex justify-center mb-10">
+            @php
+                if (isset($_GET["q"])) {
+                    $query = htmlspecialchars($_GET["q"]);
+                } else {
+                    $query = "";
+                }
+            @endphp
+            <input name="q" class="border border-gray-400 rounded-l-xl px-3 py-1 font-xl w-md" value="{{ $query }}"/>
+            <x-button class="rounded-r-xl rounded-l-none" colour="blue" type="submit"><i class="fa fa-search px-1"></i></x-button>
+        </form>
+
         <div class="border border-gray-400 dark:border-white bg-gray-200 dark:bg-slate-950 px-10 py-5 rounded-lg">
 
             <div>
