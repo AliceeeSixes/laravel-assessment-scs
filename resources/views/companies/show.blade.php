@@ -1,11 +1,11 @@
 <x-layout>
     <x-page-title>{{ $company->name }}</x-page-title>
 
-    <div class="px-10 py-5 border border-gray-400 rounded-lg bg-gray-200 max-w-4xl m-auto gap-3 flex flex-col">
+    <div class="px-10 py-5 border border-gray-400 rounded-lg bg-gray-200 dark:bg-slate-950 max-w-4xl m-auto gap-3 flex flex-col">
 
         <!-- Company Details Section -->
         <h3 class="text-xl">Company Details</h3>
-        <x-panel class="px-5 pb-5 pt-3 text-lg bg-white mb-20">
+        <x-panel class="px-5 pb-5 pt-3 text-lg bg-white dark:bg-slate-900 mb-20">
             <div class="flex justify-between mb-5 truncate truncate-ellipsis">
                 <div class="truncate truncate-ellipsis">
                     <x-card-detail class="font-bold">{{ $company->name }}</x-card-detail>

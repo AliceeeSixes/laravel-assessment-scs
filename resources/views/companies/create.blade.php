@@ -3,6 +3,9 @@
         @if ($company)
             Edit Company
         @else
+            @php
+                $company = "";
+            @endphp
             Create Company
         @endif
 
@@ -27,7 +30,7 @@
             <h3 class="text-center text-xl">Company Details</h3>
 
 
-            <x-form.input name="name" label="Name" :company=$company/>
+            <x-form.input name="name" label="Name" :company=$company :required="true"/>
 
             <x-form.input name="website" label="Website" :company=$company/>
 

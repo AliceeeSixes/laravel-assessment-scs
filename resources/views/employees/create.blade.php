@@ -3,6 +3,9 @@
         @if ($employee)
             Edit Employee
         @else
+            @php
+                $employee = "";
+            @endphp
             Create Employee
         @endif
 
@@ -28,9 +31,9 @@
 
             <h3 class="text-center text-xl">Employee Details</h3>
 
-            <x-form.input name="first_name" label="First Name" :employee=$employee/>
+            <x-form.input name="first_name" label="First Name" :employee=$employee :required="true"/>
 
-            <x-form.input name="last_name" label="Last Name" :employee=$employee/>
+            <x-form.input name="last_name" label="Last Name" :employee=$employee :required="true"/>
 
             <x-form.input name="email" label="Email" :employee=$employee/>
 
@@ -39,7 +42,11 @@
             <x-form.input name="job_title" label="Job Title" :employee=$employee/>
 
             <div class="w-fit m-auto flex flex-col">
-                <label>Company</label>
+                <label>Company
+                    <span class="text-red-300">
+                        *
+                    </span>
+                </label>
                 <select name="company_id" class="border border-slate-600 dark:border-white rounded-lg">
                     <option value="" class="text-black">Select A Company</option>
                         @php
