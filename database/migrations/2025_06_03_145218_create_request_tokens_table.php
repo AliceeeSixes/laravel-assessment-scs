@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('request_tokens', function (Blueprint $table) {
-            $table->integer("request_token");
+            $table->string("request_token");
         });
     }
 

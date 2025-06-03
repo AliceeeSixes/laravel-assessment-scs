@@ -19,9 +19,9 @@
             @php
                 $time = time();
                 $rng = rand(0, 1000000);
-                $requestToken = $time . $rng;
+                $requestToken = $time . "-" . $rng;
             @endphp
-            
+
             <input type="hidden" name="request_token" value="{{ $requestToken }}"/>
             @if ($employee)
                 @method("PATCH")
