@@ -35,25 +35,81 @@
             <h3 class="text-xl">Employees</h3>
             <x-button colour="green" class="text-lg" href="/employees/create?company={{ $company->id }}">Add Employee</x-button>
         </div>
-        <div class="grid gap-5">
-            @foreach ($employees as $employee)
-                <x-panel href="/employees/{{ $employee->id }}" class="p-5 bg-white">
-                    <x-card-detail class="text-lg font-bold">{{ $employee->last_name . ", " . $employee->first_name}}</x-card-detail>
-                    <x-card-detail type="span">Works at 
-                        <form action="/companies/{{ $company->id }}" method="POST" class="w-fit inline">
-                            @csrf
-                            <button type="submit" class="inline cursor-pointer underline hover:text-blue-400">{{ $company->name }}</button>
-                        </form>
-                        @if ($employee->job_title)
-                            as {{ $employee->job_title }}
-                        @endif
-                    </x-card-detail>
-                    <x-card-detail>Email: {{ $employee->email }}</x-card-detail>
-                    <x-card-detail>Phone: {{ $employee->phone }}</x-card-detail>
-                </x-panel>
-            @endforeach
+        @if ($employees->count() > 0)
+            <div>
+                <!-- Manual Pagination of Collection -->
+                @php
+                    if (isset($_GET["p"])) {
+                        $currentPage = htmlspecialchars($_GET["p"]);
+                    } else {
+                        $currentPage = 1;
+                    }
 
-        </div>
+                    if ($currentPage == 1) {
+                        $prevPage = 1;
+                    } else {
+                        $prevPage = $currentPage - 1;
+                    }
 
+                    if ($currentPage < ceil($employees->count() / 10)) {
+                        $nextPage = $currentPage + 1;
+                    } else {
+                        $nextPage = $currentPage;
+                    }
+
+                @endphp
+                <div class="flex justify-between">
+                    <a href="?p={{ $prevPage }}"
+                        rel="prev"
+                        class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 rounded-md hover:text-gray-500 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300 dark:focus:border-blue-700 dark:active:bg-gray-700 dark:active:text-gray-300">
+                        « Previous
+                    </a>
+                    <a href="?p={{ $nextPage }}"
+                        rel="next"
+                        class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 rounded-md hover:text-gray-500 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300 dark:focus:border-blue-700 dark:active:bg-gray-700 dark:active:text-gray-300">
+                        Next »
+                    </a>
+                </div>
+
+                <div class="grid gap-5 my-2">
+                    @php
+                        if (isset($_GET["p"])) {
+                            $employees = $employees->forPage(htmlspecialchars($_GET["p"]), 10);
+                        } else {
+                            $employees = $employees->forPage(1, 10);
+                        }
+                    @endphp
+                    @foreach ($employees as $employee)
+                        <x-panel href="/employees/{{ $employee->id }}" class="p-5 bg-white">
+                            <x-card-detail class="text-lg font-bold">{{ $employee->last_name . ", " . $employee->first_name}}</x-card-detail>
+                            <x-card-detail type="span">Works at 
+                                <form action="/companies/{{ $company->id }}" method="POST" class="w-fit inline">
+                                    @csrf
+                                    <button type="submit" class="inline cursor-pointer underline hover:text-blue-400">{{ $company->name }}</button>
+                                </form>
+                                @if ($employee->job_title)
+                                    as {{ $employee->job_title }}
+                                @endif
+                            </x-card-detail>
+                            <x-card-detail>Email: {{ $employee->email }}</x-card-detail>
+                            <x-card-detail>Phone: {{ $employee->phone }}</x-card-detail>
+                        </x-panel>
+                    @endforeach
+                </div>
+                
+                <div class="flex justify-between">
+                    <a href="?p={{ $prevPage }}"
+                        rel="prev"
+                        class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 rounded-md hover:text-gray-500 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300 dark:focus:border-blue-700 dark:active:bg-gray-700 dark:active:text-gray-300">
+                        « Previous
+                    </a>
+                    <a href="?p={{ $nextPage }}"
+                        rel="next"
+                        class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 rounded-md hover:text-gray-500 focus:outline-none focus:ring ring-gray-300 focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-300 dark:focus:border-blue-700 dark:active:bg-gray-700 dark:active:text-gray-300">
+                        Next »
+                    </a>
+                </div>
+            </div>
+        @endif
     </div>
 </x-layout>
