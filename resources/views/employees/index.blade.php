@@ -21,8 +21,8 @@
 
         <div class="border border-gray-400 dark:border-white bg-gray-200 dark:bg-slate-950 px-10 py-5 rounded-lg">
 
-            <div>
-                {{ $employees->links() }}
+            <div class="mb-5">
+                {{ $employees->links("components.pagination") }}
             </div>
 
             <div class="grid gap-5 py-2">
@@ -45,7 +45,7 @@
 
             </div>
 
-            <div>
+            <div class="mt-5">
                 {{ $employees->links() }}
             </div>
         </div>

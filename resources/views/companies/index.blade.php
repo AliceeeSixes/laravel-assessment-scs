@@ -20,8 +20,8 @@
         </form>
 
         <div class="border border-gray-400 dark:border-white bg-gray-200 dark:bg-slate-950 rounded-lg px-10 py-5">
-            <div>
-                {{ $companies->links() }}
+            <div class="mb-5">
+                {{ $companies->links("components.pagination") }}
             </div>
             <div class="grid gap-5 my-2">
                 @foreach ($companies as $company)
@@ -47,7 +47,7 @@
 
             </div>
 
-            <div>
+            <div class="mt-5">
                 {{ $companies->links() }}
             </div>
         </div>

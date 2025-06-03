@@ -24,7 +24,7 @@ class SearchController extends Controller
     public function Employees() {
         $searchTerm = htmlspecialchars(request("q"));
         if ($searchTerm) {
-            $employees = Employee::with("company")->where("name", "like", "%{$searchTerm}%")->orderBy("updated_at", "DESC")->simplePaginate(10);
+            $employees = Employee::with("company")->whereRaw('concat(first_name, " ", last_name) like ?', "%{$searchTerm}%")->orderBy("updated_at", "DESC")->simplePaginate(10);
             return view("employees.index", ["employees"=>$employees]);
         } else {
             return redirect("/employees");

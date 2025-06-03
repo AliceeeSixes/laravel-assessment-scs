@@ -13,7 +13,7 @@
     <div class="text-black dark:text-white dark:bg-slate-900 min-h-full px-5">
 
         <!-- Navbar -->
-        <nav class="bg-white dark:bg-slate-900 mb-10 sticky top-0 flex justify-center text-xl sm:h-15 items-center border-b border-black">
+        <nav class="bg-white dark:bg-slate-900 mb-10 sticky top-0 flex justify-center text-xl sm:h-15 items-center border-b border-black dark:border-white">
 
             <!-- Nav Buttons -->
             <div class= "py-3 flex sm:gap-5 flex-wrap justify-center sm:justify-normal">
