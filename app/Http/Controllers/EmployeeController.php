@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Employee;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 
 class EmployeeController extends Controller
@@ -28,6 +29,18 @@ class EmployeeController extends Controller
     }
 
     public function store(Request $request) {
+
+        // Idempotency Token (skip duplicate requests)
+        $requestToken = $request->request_token;
+        $exists = count((DB::table("request_tokens")->select("request_token")->where("request_token", $requestToken))->get());
+        if (! $exists) {
+            DB::table("request_tokens")->insert([
+                "request_token" => $requestToken
+            ]);
+        } else {
+            return redirect("/employees");
+        }
+
         $validatedAttributes = $request->validate([
             "first_name"=>["required", "max:128"],
             "last_name"=>["required", "max:128"],
@@ -41,6 +54,18 @@ class EmployeeController extends Controller
     }
 
     public function update($id, Request $request) {
+
+        // Idempotency Token (skip duplicate requests)
+        $requestToken = $request->request_token;
+        $exists = count((DB::table("request_tokens")->select("request_token")->where("request_token", $requestToken))->get());
+        if (! $exists) {
+            DB::table("request_tokens")->insert([
+                "request_token" => $requestToken
+            ]);
+        } else {
+            return redirect("/employees");
+        }
+
         $validatedAttributes = $request->validate([
             "first_name"=>["required", "max:128"],
             "last_name"=>["required", "max:128"],

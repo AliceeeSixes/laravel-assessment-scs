@@ -15,6 +15,14 @@
         <!-- New Employee Form -->
         <form method="POST" action="" class="flex gap-5 flex-col p-5">
             @csrf
+            {{-- Idempotency Token (skip duplicate requests) --}}
+            @php
+                $time = time();
+                $rng = rand(0, 1000000);
+                $requestToken = $time . $rng;
+            @endphp
+            
+            <input type="hidden" name="request_token" value="{{ $requestToken }}"/>
             @if ($employee)
                 @method("PATCH")
             @endif

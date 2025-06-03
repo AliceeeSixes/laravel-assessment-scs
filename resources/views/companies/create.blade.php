@@ -14,6 +14,13 @@
     <x-panel class="sm:w-md lg:w-xl m-auto">
         <form method="POST" action="" class="flex gap-5 flex-col p-5" enctype="multipart/form-data">
             @csrf
+            @php
+                $time = time();
+                $rng = rand(0, 1000000);
+                $requestToken = $time . $rng;
+            @endphp
+            <input type="hidden" name="request_token" value="{{ $requestToken }}"/>
+
             @if ($company)
                 @method("PATCH")
             @endif
