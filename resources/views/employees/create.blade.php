@@ -11,7 +11,7 @@
 
     </x-page-title>
 
-    <x-panel class="sm:w-md lg:w-xl m-auto">
+    <x-panel class="sm:w-md lg:w-xl m-auto bg-gray-200 dark:bg-slate-950 rounded-xl">
         <!-- New Employee Form -->
         <form method="POST" action="" class="flex gap-5 flex-col p-5">
             @csrf
@@ -37,7 +37,7 @@
             @endif
 
 
-            <h3 class="text-center text-xl">Employee Details</h3>
+            <h3 class="text-center text-2xl">Employee Details</h3>
 
             <x-form.input name="first_name" label="First Name" :employee=$employee :required="true"/>
 
@@ -55,7 +55,7 @@
                         *
                     </span>
                 </label>
-                <select name="company_id" class="border border-slate-600 dark:border-white rounded-lg">
+                <select name="company_id" class="text-black bg-white w-2xs px-3 border border-transparent rounded-xl">
                     <option value="" class="text-black">Select A Company</option>
                         @php
                             $companies = App\Models\Company::orderBy("name")->get();

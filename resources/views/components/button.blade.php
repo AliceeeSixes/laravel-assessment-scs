@@ -12,20 +12,20 @@
 
 
 @php
-    $classes = "rounded-lg px-3 py-1 cursor-pointer text-white";
+    $classes = "font-bold rounded-full px-3 py-1 cursor-pointer text-white border brder-3 border-transparent hover:border-black dark:hover:border-white transition-border duration-300";
 @endphp
 
 @if ($colour == "blue")
     @php
-        $classes .= " bg-blue-400 hover:bg-blue-600";
+        $classes .= " bg-sky-500 dark:bg-fuchsia-800";
     @endphp
 @elseif ($colour == "red")
     @php
-        $classes .= " bg-red-500 hover:bg-red-700";
+        $classes .= " bg-red-600 dark:bg-red-800";
     @endphp
 @elseif ($colour == "green")
     @php
-        $classes .= " bg-green-500 hover:bg-green-600";
+        $classes .= " bg-green-500 dark:bg-green-700";
     @endphp
 @else
     @php

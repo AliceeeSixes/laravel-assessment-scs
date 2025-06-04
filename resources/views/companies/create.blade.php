@@ -11,7 +11,7 @@
 
     </x-page-title>
 
-    <x-panel class="sm:w-md lg:w-xl m-auto">
+    <x-panel class="sm:w-md lg:w-xl m-auto bg-gray-200 dark:bg-slate-950 rounded-xl">
         <form method="POST" action="" class="flex gap-5 flex-col p-5" enctype="multipart/form-data">
             @csrf
             {{-- Idempotency Token (skip duplicate requests) --}}
@@ -35,7 +35,7 @@
                 </div>
             @endif
 
-            <h3 class="text-center text-xl">Company Details</h3>
+            <h3 class="text-center text-2xl">Company Details</h3>
 
 
             <x-form.input name="name" label="Name" :company=$company :required="true"/>
@@ -46,7 +46,7 @@
 
             <div class="w-fit m-auto flex flex-col">
                 <label>Logo</label>
-                <input name="logo" type="file" class="border border-slate-600 dark:border-white rounded-xl px-3" />
+                <input name="logo" type="file" class="text-black bg-white w-2xs border border-transparent rounded-xl px-3" />
             </div>
 
             <div class="flex gap-5 justify-center">

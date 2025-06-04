@@ -1,6 +1,6 @@
 <x-layout>
     <x-page-title>Log In</x-page-title>
-    <form method="POST" action="" class="flex flex-col text-center w-full sm:w-xl m-auto border border-gray-400 rounded-xl p-5 text-lg gap-5">
+    <form method="POST" action="" class="flex flex-col text-center w-full sm:w-xl m-auto bg-gray-200 dark:bg-slate-950 rounded-xl p-5 text-xl gap-5">
         @csrf
         @if ($errors->any())
             <div class="alert alert-danger">
@@ -13,23 +13,24 @@
         @endif
         <div class="flex flex-col">
             <label>Email</label>
-            <input name="email" class="border border-gray-400 rounded-lg w-full sm:w-md m-auto px-3 py-1"/>
+            <input name="email" class="text-black bg-white border border-transparent rounded-xl w-full sm:w-md m-auto px-3 py-1"/>
         </div>
 
         <div class="flex flex-col">
             <label>Password</label>
-            <input name="password" type="password" class="border border-gray-400 rounded-lg w-full sm:w-md m-auto px-3 py-1"/>
+            <input name="password" type="password" class="text-black bg-white border border-transparent rounded-xl w-full sm:w-md m-auto px-3 py-1"/>
         </div>
 
-        <div class="w-fit m-auto">
+        <div class="mt-2">
+            <x-button colour="blue" type="submit">Log In</x-button>
+        </div>
+
+        <div class="w-fit m-auto text-base">
             <p class="underline">Test user credentials</p>
             <p>Email: admin@admin.com</p>
             <p>Password: password</p>
         </div>
 
-        <div class="mt-5">
-            <x-button colour="blue" type="submit">Log In</x-button>
-        </div>
     </form>
     
 </x-layout>
