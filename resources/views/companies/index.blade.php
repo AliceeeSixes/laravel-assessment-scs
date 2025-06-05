@@ -18,7 +18,7 @@
                     <x-panel href="/companies/{{ $company->id }}" class="p-5 bg-white dark:bg-slate-900">
                         <div class="flex justify-between">
                             <div class="truncate truncate-ellipsis">
-                                <p class="text-xl font-bold truncate truncate-ellipsis">{{ $company->name }}</p>
+                                <p class="text-xl font-bold truncate truncate-ellipsis max-w-xl">{{ $company->name }}</p>
                                 <p class="truncate truncate-ellipsis">Email: {{ $company->email }}</p>
                                 <p class="truncate truncate-ellipsis">Website: {{ $company->website }}</p>
                                 <p class="truncate truncate-ellipsis">Employees: {{ $company->employees->count() }}
