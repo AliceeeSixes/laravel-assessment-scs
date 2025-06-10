@@ -39,15 +39,25 @@
 
             <h3 class="text-center text-2xl">Employee Details</h3>
 
-            <x-form.input name="first_name" label="First Name" :employee=$employee :required="true"/>
+            <input
+                type="hidden"
+                name="referrer"
+                @if (isset($_GET["company"]))
+                    value="{{ $_GET["company"] }}"
+                @else
+                    value=""
+                @endif
+                 />
 
-            <x-form.input name="last_name" label="Last Name" :employee=$employee :required="true"/>
+            <x-form.input name="first_name" placeholder="John" label="First Name" :employee=$employee :required="true"/>
 
-            <x-form.input name="email" label="Email" :employee=$employee/>
+            <x-form.input name="last_name" placeholder="Doe" label="Last Name" :employee=$employee :required="true"/>
 
-            <x-form.input name="phone" label="Phone" :employee=$employee/>
+            <x-form.input name="email" placeholder="email@site.com" label="Email" :employee=$employee/>
 
-            <x-form.input name="job_title" label="Job Title" :employee=$employee/>
+            <x-form.input name="phone" placeholder="123 4567 8912" label="Phone" :employee=$employee/>
+
+            <x-form.input name="job_title" placeholder="Web Developer" label="Job Title" :employee=$employee/>
 
             <div class="w-fit m-auto flex flex-col">
                 <label>Company

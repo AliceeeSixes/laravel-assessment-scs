@@ -1,5 +1,4 @@
-@props(["name"=>"","label"=>"Input", "company", "employee", "required"=>""])
-
+@props(["name"=>"","label"=>"Input", "company", "employee", "required"=>"", "placeholder"=>""])
 
     <div class="w-2xs m-auto flex flex-col text-lg">
         <label>{{ $label }}
@@ -7,7 +6,7 @@
                     <span class="text-red-300">*</span>
                 @endif
         </label>
-        <input name="{{ $name }}" class="text-black border border-transparent bg-white rounded-xl px-3" 
+        <input name="{{ $name }}" placeholder="{{ $placeholder }}"" class="text-black border border-transparent bg-white rounded-xl px-3" 
 
             @if (isset($company))
                 @if ($company)

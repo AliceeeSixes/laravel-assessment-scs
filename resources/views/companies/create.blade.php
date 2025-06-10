@@ -38,11 +38,11 @@
             <h3 class="text-center text-2xl">Company Details</h3>
 
 
-            <x-form.input name="name" label="Name" :company=$company :required="true"/>
+            <x-form.input name="name" placeholder='Alphabet Inc.' label="Name" :company=$company :required="true"/>
 
-            <x-form.input name="website" label="Website" :company=$company/>
+            <x-form.input name="website" placeholder="https://www.google.com" label="Website" :company=$company/>
 
-            <x-form.input name="email" label="Email" :company=$company/>
+            <x-form.input name="email" placeholder="email@site.com" label="Email" :company=$company/>
 
             <div class="w-fit m-auto flex flex-col">
                 <label>Logo</label>

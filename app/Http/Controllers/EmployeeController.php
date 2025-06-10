@@ -50,7 +50,15 @@ class EmployeeController extends Controller
             "job_title"=>["nullable", "max:128"]
         ]);
         Employee::create($validatedAttributes);
-        return redirect("/employees");
+
+        $referrer = $request->referrer;
+        if ($referrer) {
+            return redirect("/companies/$referrer");
+        } else {
+                return redirect("/employees");
+        }
+
+
     }
 
     public function update($id, Request $request) {
@@ -63,7 +71,7 @@ class EmployeeController extends Controller
                 "request_token" => $requestToken
             ]);
         } else {
-            return redirect("/employees");
+            return redirect("/employees/$id");
         }
 
         $validatedAttributes = $request->validate([
@@ -75,7 +83,7 @@ class EmployeeController extends Controller
             "job_title"=>["nullable", "max:128"]
         ]);
         Employee::where("id",$id)->update($validatedAttributes);
-        return redirect("/employees");
+        return redirect("/employees/$id");
     }
 
     public function destroy($id) {

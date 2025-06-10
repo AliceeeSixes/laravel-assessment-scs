@@ -92,7 +92,7 @@ class CompanyController extends Controller
 
 
         Company::where("id",$id)->update($validatedAttributes);
-        return redirect("/companies");
+        return redirect("/companies/$id");
     }
 
     public function destroy($id) {
