@@ -7,6 +7,6 @@
             $query = "";
         }
     @endphp
-    <input name="q" class="bg-gray-200 rounded-l-full px-3 py-1 font-xl w-md focus-within:outline-none" value="{{ $query }}"/>
+    <input name="q" class="bg-gray-200 rounded-l-full px-3 py-1 font-xl w-2xs sm:w-md focus-within:outline-none" value="{{ $query }}"/>
     <x-button class="rounded-l-none" colour="blue" type="submit"><i class="fa fa-search px-1"></i></x-button>
 </form>
