@@ -2,6 +2,18 @@
     <x-page-title>{{ $company->name }}</x-page-title>
 
     <div class="px-10 py-5 border border-gray-400 rounded-lg bg-gray-200 dark:bg-slate-950 max-w-4xl m-auto gap-3 flex flex-col">
+        @if (session("error"))
+            <div class="bg-red-300 px-5 py-3 text-lg flex justify-between" id="delete-error">
+                <p>
+                    {{ session("error") }}
+                </p>
+                <button class="cursor-pointer" onclick="
+                    console.log('fdfdf');
+                    $element = getElementById('delete-error');
+                    $element.remove();
+                "><i class="fa fa-xmark"></i></button>
+            </div>
+        @endif
 
         <!-- Company Details Section -->
         <h3 class="text-xl">Company Details</h3>

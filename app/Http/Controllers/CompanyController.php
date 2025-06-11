@@ -12,7 +12,7 @@ use Illuminate\Validation\ValidationException;
 class CompanyController extends Controller
 {
     public function index() {
-        $companies = Company::with("employees")->orderBy("updated_at", "DESC")->simplePaginate(10);
+        $companies = Company::with("employees")->orderBy("updated_at", "DESC")->paginate(10);
         return view("companies.index", ["companies"=>$companies]);
     }
 
@@ -98,9 +98,18 @@ class CompanyController extends Controller
     public function destroy($id) {
         // Find Company
         $company = Company::find($id);
-        // Destroy Company
-        $company->delete();
-        // Redirect
-        return redirect("/companies");
+        // Check if company still has employees
+        $employees = $company->employees();
+        if ($employees->count() == 0) {
+            // Destroy Company
+            $company->delete();
+            // Redirect
+            return redirect("/companies");
+        } else {
+            // Throw error message
+            $error = "This company still has employees that need to be deleted/reassigned!";
+            return redirect()->action([CompanyController::class, "show"], ["id"=>$id])->with(["error"=>$error]);
+        }
+
     }
 }
