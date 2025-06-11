@@ -93,7 +93,18 @@
             </div>
 
             <div class="flex gap-5 justify-center">
-                <x-button colour="red" href="/employees" class="px-3 py-1 rounded-lg transition-bg duration-300">Cancel</x-button>
+                @php
+                    if (isset($_GET["company"])) {
+                        $id = htmlspecialchars($_GET['company']);
+                        $cancelhref = "/companies/$id";
+                    } else {
+                        $cancelhref = "/employees";
+                    }
+                @endphp
+                <x-button
+                    colour="red"
+                    href="{{ $cancelhref }}"
+                    class="px-3 py-1 rounded-lg transition-bg duration-300">Cancel</x-button>
                 <x-button colour="green" type="submit" class="px-3 py-1 rounded-lg transition-bg duration-300 cursor-pointer">Submit</x-button>
             </div>
 

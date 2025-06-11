@@ -16,18 +16,23 @@
             <div class="grid gap-5 py-2">
                 @foreach ($companies as $company)
                     <x-panel href="/companies/{{ $company->id }}" class="p-5 bg-white dark:bg-slate-900">
-                        <div class="flex justify-between">
-                            <div class="truncate truncate-ellipsis">
+                        <div class="flex justify-between gap-5">
+                            <div class="truncate truncate-ellipsis flex-1 flex flex-col justify-between">
                                 <p class="text-xl font-bold truncate truncate-ellipsis max-w-xl">{{ $company->name }}</p>
-                                <p class="truncate truncate-ellipsis">Email: {{ $company->email }}</p>
-                                <p class="truncate truncate-ellipsis">Website: {{ $company->website }}</p>
                                 <p class="truncate truncate-ellipsis">Employees: {{ $company->employees->count() }}
+                                <!-- Action Buttons - Mobile View -->
+                                <x-company-actions :company="$company" class="flex sm:hidden w-fit gap-2"/>
+                                <p class="truncate truncate-ellipsis hidden sm:block">Email: {{ $company->email }}</p>
+                                <p class="truncate truncate-ellipsis hidden sm:block">Website: {{ $company->website }}</p>
+                                
                             </div>
-                            <div>
+                            <!-- Action Buttons - Desktop View -->
+                            <x-company-actions :company="$company" class="self-center hidden sm:flex gap-5"/>
+                            <div class="flex">
                                 @if ($company->logo)
-                                    <img src="/storage/{{ $company->logo }}" class="w-20 h-20"/>
+                                    <img src="/storage/{{ $company->logo }}" class="w-25 h-25"/>
                                 @else
-                                    <img src="https://placehold.co/100" class="w-20"/>
+                                    <img src="https://placehold.co/100" class="w-25"/>
                                 @endif
                             </div>
                         </div>
