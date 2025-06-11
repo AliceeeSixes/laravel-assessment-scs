@@ -8,9 +8,8 @@
                     {{ session("error") }}
                 </p>
                 <button class="cursor-pointer" onclick="
-                    console.log('fdfdf');
-                    $element = getElementById('delete-error');
-                    $element.remove();
+                    $element = $('#delete-error');
+                    $element.slideUp();
                 "><i class="fa fa-xmark"></i></button>
             </div>
         @endif
@@ -34,7 +33,7 @@
 
             <div class="text-center flex justify-center gap-5">
                 <x-button colour="blue" href="/companies/edit/{{ $company->id }}" class="px-3 py-1 rounded-lg transition-bg duration-300">Edit Details</x-button>
-                <form action="/companies/delete/{{ $company->id }}" method="POST" onsubmit="return confirm('Are you sure you want to do this?');">
+                <form action="/companies/delete/{{ $company->id }}" method="POST" onsubmit="return confirm('Are you sure you want to delete {{$company->name}}?');">
                     @csrf
                     <x-button colour="red" type="submit" class="px-3 py-1 rounded-lg transition-bg duration-300">Delete</x-button>
                 </form>
