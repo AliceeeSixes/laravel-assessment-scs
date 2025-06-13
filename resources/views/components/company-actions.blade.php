@@ -1,5 +1,5 @@
 @props(["company"])
-<div {{ $attributes->merge(["class"=>"items-center jutify-between md:text-2xl"]) }}>
+<div {{ $attributes->merge(["class"=>"items-center jutify-between"]) }}>
     <!-- Add Employee -->
     <form action="/employees/create" method="GET">
         <input type="hidden" name="company" value="{{$company->id}}" />

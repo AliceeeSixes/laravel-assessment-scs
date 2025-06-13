@@ -17,19 +17,22 @@
 
             <div class="grid gap-5 py-2">
                 @foreach ($employees as $employee)
-                    <x-panel href="/employees/{{ $employee->id }}" class="p-5 bg-white dark:bg-slate-900">
-                        <x-card-detail class="text-xl font-bold">{{ $employee->last_name . ", " . $employee->first_name}}</x-card-detail>
-                        <x-card-detail type="span">Works at 
+                    <x-panel href="/employees/{{ $employee->id }}" class="p-5 bg-white dark:bg-slate-900 flex flex-col lg:flex-row lg:gap-1 lg:justify-between truncate truncate-ellipsis">
+                        <x-card-detail class="text-xl font-bold lg:w-50 lg:text-base">{{ $employee->last_name . ", " . $employee->first_name}}</x-card-detail>
+                        <x-card-detail type="span" class="lg:w-40 block">
+                            <span class="lg:hidden">Works at </span>
                             <form action="/companies/{{ $employee->company->id }}" method="POST" class="w-fit inline">
                                 @csrf
-                                <button type="submit" class="inline cursor-pointer underline hover:text-blue-400">{{ $employee->company->name }}</button>
+                                <button type="submit" class="inline cursor-pointer underline hover:text-blue-400 lg:w-40 overflow-hidden truncate truncate-ellipsis text-left">
+                                    {{ $employee->company->name }}
+                                </button>
                             </form>
                             @if ($employee->job_title)
                                 as {{ $employee->job_title }}
                             @endif
                         </x-card-detail>
-                        <x-card-detail>Email: {{ $employee->email }}</x-card-detail>
-                        <x-card-detail>Phone: {{ $employee->phone }}</x-card-detail>
+                        <x-card-detail class="lg:w-40"><i class="fa fa-envelope"></i> {{ $employee->email }}</x-card-detail>
+                        <x-card-detail class="lg:w-40"><i class="fa fa-phone"></i> {{ $employee->phone }}</x-card-detail>
                     </x-panel>
                 @endforeach
 

@@ -17,22 +17,23 @@
                 @foreach ($companies as $company)
                     <x-panel href="/companies/{{ $company->id }}" class="p-5 bg-white dark:bg-slate-900">
                         <div class="flex justify-between gap-5">
-                            <div class="truncate truncate-ellipsis flex-1 flex flex-col justify-between">
-                                <p class="text-xl font-bold truncate truncate-ellipsis max-w-xl">{{ $company->name }}</p>
-                                <p class="truncate truncate-ellipsis">Employees: {{ $company->employees->count() }}
+                            <div class="truncate truncate-ellipsis flex-1 flex flex-col justify-between lg:flex-row lg:items-center">
+                                <p class="text-xl xl:text-2xl font-bold truncate truncate-ellipsis max-w-xl lg:w-50 lg:text-lg">{{ $company->name }}</p>
+                                <p class="truncate truncate-ellipsis min-w-4xs lg:w-10"><i class="fa fa-user"></i> {{ $company->employees->count() }}
                                 <!-- Action Buttons - Mobile View -->
-                                <x-company-actions :company="$company" class="flex sm:hidden w-fit gap-2"/>
-                                <p class="truncate truncate-ellipsis hidden sm:block">Email: {{ $company->email }}</p>
-                                <p class="truncate truncate-ellipsis hidden sm:block">Website: {{ $company->website }}</p>
+                                <x-company-actions :company="$company" class="flex sm:hidden w-fit gap-2 text-sm"/>
+                                <p class="truncate truncate-ellipsis hidden sm:block lg:w-50"><i class="fa fa-envelope"></i> {{ $company->email }}</p>
+                                <p class="truncate truncate-ellipsis hidden sm:block lg:w-50"><i class="fa fa-globe"></i> {{ $company->website }}</p>
+
                                 
                             </div>
                             <!-- Action Buttons - Desktop View -->
-                            <x-company-actions :company="$company" class="self-center hidden sm:flex gap-5"/>
+                            <x-company-actions :company="$company" class="self-center hidden sm:flex gap-2 flex-col"/>
                             <div class="flex">
                                 @if ($company->logo)
-                                    <img src="/storage/{{ $company->logo }}" class="w-25 h-25"/>
+                                    <img src="/storage/{{ $company->logo }}" class="w-20 h-20 sm:w-30 sm:h-30"/>
                                 @else
-                                    <img src="https://placehold.co/100" class="w-25"/>
+                                    <img src="https://placehold.co/100" class="w-20 sm:w-30"/>
                                 @endif
                             </div>
                         </div>
