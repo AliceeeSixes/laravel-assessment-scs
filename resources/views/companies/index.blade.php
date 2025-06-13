@@ -28,12 +28,12 @@
                                 
                             </div>
                             <!-- Action Buttons - Desktop View -->
-                            <x-company-actions :company="$company" class="self-center hidden sm:flex gap-2 flex-col"/>
+                            <x-company-actions :company="$company" class="self-center hidden sm:flex gap-2 flex-col lg:text-xs"/>
                             <div class="flex">
                                 @if ($company->logo)
-                                    <img src="/storage/{{ $company->logo }}" class="w-20 h-20 sm:w-30 sm:h-30"/>
+                                    <img src="/storage/{{ $company->logo }}" class="w-20 h-20 sm:w-30 sm:h-30 lg:h-20 lg:w-20"/>
                                 @else
-                                    <img src="https://placehold.co/100" class="w-20 sm:w-30"/>
+                                    <img src="https://placehold.co/100" class="w-20 sm:w-30 lg:w-20"/>
                                 @endif
                             </div>
                         </div>
