@@ -1,6 +1,6 @@
 @props(["colour"=>"grey", "type"=>""])
 
-@if (! $type)
+@if (! $type || $type == "a")
     @php
         $tag = "a";
     @endphp

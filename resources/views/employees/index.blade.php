@@ -16,6 +16,9 @@
             </div>
 
             <div class="grid gap-5 py-2">
+                @if (count($employees) == 0)
+                    No results found for "{{ htmlspecialchars($_GET["q"]); }}"
+                @endif
                 @foreach ($employees as $employee)
                     <x-panel href="/employees/{{ $employee->id }}" class="p-5 bg-white dark:bg-slate-900 flex flex-col lg:flex-row lg:gap-1 lg:justify-between truncate truncate-ellipsis">
                         <x-card-detail class="text-xl font-bold lg:w-50 lg:text-base">{{ $employee->last_name . ", " . $employee->first_name}}</x-card-detail>

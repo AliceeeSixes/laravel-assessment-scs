@@ -14,6 +14,9 @@
                 {{ $companies->links("components.pagination") }}
             </div>
             <div class="grid gap-5 py-2">
+                @if (count($companies) == 0)
+                    No results found for "{{ htmlspecialchars($_GET["q"]); }}"
+                @endif
                 @foreach ($companies as $company)
                     <x-panel href="/companies/{{ $company->id }}" class="p-5 bg-white dark:bg-slate-900">
                         <div class="flex justify-between gap-5">
