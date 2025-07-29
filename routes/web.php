@@ -5,12 +5,16 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
+use App\Models\Company;
+use App\Models\Employee;
 
 
 // Dashboard
 Route::middleware(["auth"])->group(function () {
     Route::get('/', function () {
-        return view("/home");
+        $companies = Company::orderBy("updated_at", "DESC")->simplePaginate(5);
+        $employees = Employee::orderBy("updated_at", "DESC")->simplePaginate(5);
+        return view("/home", ["companies"=>$companies,"employees"=>$employees]);
     });
 });
 
