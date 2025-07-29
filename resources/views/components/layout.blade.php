@@ -23,7 +23,7 @@
 
                 <!-- Nav Buttons -->
                 <div class= "py-3 flex sm:gap-5 flex-wrap justify-center sm:justify-normal">
-                    <x-nav-link href="/">Home</x-nav-link>
+                    <x-nav-link href="/">Dashboard</x-nav-link>
                     <x-nav-link href="/companies">Companies</x-nav-link>
                     <x-nav-link href="/employees">Employees</x-nav-link>
 
@@ -60,7 +60,7 @@
 
                 <!-- Nav Buttons -->
                 <div class= "py-3 flex flex-col gap-2 items-center shown text-xl" id="nav-mobile-dropdown">
-                    <x-nav-link href="/">Home</x-nav-link>
+                    <x-nav-link href="/">Dashboard</x-nav-link>
                     <x-nav-link href="/companies">Companies</x-nav-link>
                     <x-nav-link href="/employees">Employees</x-nav-link>
 

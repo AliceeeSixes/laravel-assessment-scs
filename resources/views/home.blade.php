@@ -23,7 +23,7 @@
             <h2 class="text-xl underline">Recent Companies</h2>
             <div class="flex flex-col gap-2">
                 @foreach ($companies as $company)
-                    <a href="/companies/{{ $company->id }}" class="border border-black rounded-xl bg-gray-200 hover:bg-gray-300 transition-bg duration-300 w-full flex flex-col lg:flex-row justify-between px-3">
+                    <a href="/companies/{{ $company->id }}" class="border border-black rounded-xl bg-gray-200 hover:bg-gray-300 dark:bg-slate-800 dark:hover:bg-slate-900 transition-bg duration-300 w-full flex flex-col lg:flex-row justify-between px-5 py-1">
                         <span>{{ $company->name }}</span>
                         <span>Updated {{ $company->updated_at }}
                     </a>
@@ -35,7 +35,7 @@
             <h2 class="text-xl underline">Recent Employees</h2>
             <div class="flex flex-col gap-2">
                 @foreach ($employees as $employee)
-                    <a href="/employees/{{ $employee->id }}" class="border border-black rounded-xl bg-gray-200 hover:bg-gray-300 transition-bg duration-300 w-full flex flex-col lg:flex-row justify-between px-3">
+                    <a href="/employees/{{ $employee->id }}" class="border border-black rounded-xl bg-gray-200 hover:bg-gray-300 dark:bg-slate-800 dark:hover:bg-slate-900 transition-bg duration-300 w-full flex flex-col lg:flex-row justify-between px-5 py-1">
                         <span>{{ $employee->first_name . " " . $employee->last_name }}</span>
                         <span>Updated {{ $employee->updated_at }}
                     </a>
