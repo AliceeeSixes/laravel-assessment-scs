@@ -19,7 +19,7 @@
         <!-- Navbar -->
         @auth
             <!-- Desktop Nav -->
-            <nav class="px-5 bg-sky-500 dark:bg-fuchsia-800 text-white mb-10 sticky top-0 justify-center text-xl sm:h-15 items-center border-b border-black dark:border-white hidden sm:flex">
+            <nav class="px-5 bg-sky-500 dark:bg-fuchsia-800 text-white mb-10 sticky top-0 justify-center text-xl sm:h-15 items-center border-b border-black dark:border-white hidden sm:flex z-1">
 
                 <!-- Nav Buttons -->
                 <div class= "py-3 flex sm:gap-5 flex-wrap justify-center sm:justify-normal">
@@ -41,9 +41,9 @@
                 </div>
             </nav>
             <!-- Mobile Nav -->
-            <nav class="px-5 bg-sky-500 dark:bg-fuchsia-800 text-white mb-10 sticky min-h-10 top-0 flex flex-col text-lg text-center justify-center border-b border-black dark:border-white sm:hidden">
+            <nav class="px-5 bg-sky-500 dark:bg-fuchsia-800 text-white mb-10 sticky min-h-12 top-0 flex flex-col text-lg text-center justify-center border-b border-black dark:border-white sm:hidden z-1">
                 <!-- Toggle Button -->
-                <div class="flex justify-end text-3xl fixed top-0 right-2 h-10">
+                <div class="flex justify-end text-3xl fixed top-1 right-3 h-10">
                     <button
                         onclick="
                             $nav = $('#nav-mobile-dropdown');
