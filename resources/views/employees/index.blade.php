@@ -19,6 +19,12 @@
                 @if (count($employees) == 0)
                     No results found for "{{ htmlspecialchars($_GET["q"]); }}"
                 @endif
+                <div class="hidden lg:flex flex-row px-5 gap-1 justify-between underline">
+                    <div class="w-50">Name</div>
+                    <div class="w-40">Company</div>
+                    <div class="w-40">Email</div>
+                    <div class="w-40">Phone</div>
+                </div>
                 @foreach ($employees as $employee)
                     <x-panel href="/employees/{{ $employee->id }}" class="p-5 bg-white dark:bg-slate-900 flex flex-col lg:flex-row lg:gap-1 lg:justify-between truncate truncate-ellipsis">
                         <x-card-detail class="text-xl font-bold lg:w-50 lg:text-base">{{ $employee->last_name . ", " . $employee->first_name}}</x-card-detail>
